@@ -1,7 +1,8 @@
-## act 1
+## Act 1
+¿Qué es un computador digital moderno?
+Es una máquina electrónica que procesa datos en forma binaria para ejecutar programas.
 
-[Mi codigo](https://www.youtube.com/watch?v=ydA5TSFRN5I)
-
+## Act 2
   ```
 absjadhsajd
 ```
