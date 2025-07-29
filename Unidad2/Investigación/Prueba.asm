@@ -5,17 +5,8 @@ D=M
 D=D-A
 @DRAW
 D;JEQ
-
-@KBD
-D=M
-@0
-D=D-A
-@CLEAR
-D;JEQ
-
 @LOOP
 0;JMP
-
 
 
 
@@ -26,8 +17,6 @@ D;JEQ
 	D=A
 	@R12
 	AD=D+M
-
-	
 	// row 5
 	@32767
 	A=!A // A holds val
@@ -214,30 +203,18 @@ D;JEQ
 	@LOOP
 	D;JMP
 
-
+@CLEAR
 (CLEAR)
-@R0         // índice = 0
-M=0
-@SCREEN
-D=A
-@R1         // dirección actual en pantalla
-M=D
+    @KBD
+    D=M
+    @100
+    D=D-A       
+    @END         
+    D;JEQ
 
-(CLEAR_LOOP)
-@R1
-A=M
-M=0         // limpiar pixel
+    @SCREEN
+    D=A
 
-@R1
-M=M+1       // siguiente dirección de pantalla
-
-@R0
-M=M+1       // siguiente índice
-D=M
-@8192       // total de direcciones de pantalla (de 16384 a 24575)
-D=D-A
-@LOOP
-D;JEQ       // si ya limpiamos todo, vuelve a LOOP
-
-@CLEAR_LOOP
-0;JMP
+	(END)
+    @END
+    0;JMP
