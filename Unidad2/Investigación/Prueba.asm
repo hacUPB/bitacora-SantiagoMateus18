@@ -7,6 +7,9 @@ D=D-A
 D;JEQ
 @LOOP
 0;JMP
+
+
+
 (DRAW)
 // put bitmap location value in R12
 	// put code return address in R13
@@ -197,6 +200,7 @@ D;JEQ
 	AD=D+A
 	M=0
 	// return
-	@R13
-	A=M
+	@LOOP
 	D;JMP
+
+@CLEAR
