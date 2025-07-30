@@ -9,5 +9,9 @@ Funciona el codigo.
 
 ## Actividad 3
 
+No funciona porque al realizar el cambio para el @CLEAR genera un extraño LOOP sin realizar antes el LOOP de la tecla "d". Lo que yo creo es que 
+
+## Actividad 4
+
 
 
