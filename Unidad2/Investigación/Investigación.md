@@ -9,9 +9,11 @@ Funciona el codigo.
 
 ## Actividad 3
 
-No funciona porque al realizar el cambio para el @CLEAR genera un extraño LOOP sin realizar antes el LOOP de la tecla "d". Lo que yo creo es que 
+No funciona porque al realizar el cambio para el @CLEAR genera un extraño LOOP sin realizar antes el LOOP de la tecla "d". Lo que yo creo es que el codigo borra repetidamente el programa por lo que nunca se dibuja realmente y lleva a que se repita el LOOP final de borrar. Por ende la tecla "d" es inexistente en el programa.
 
 ## Actividad 4
+
+
 
 
 

@@ -77,4 +77,49 @@ for (int i = 1; i <= 100; i++) {
 ### RAE2: Prueba del programa
 El programa no ha sido testeado por un fallo en el editor de código Visual Studio Code. Sin embargo fue editado directamente del codigo del profesor. 
 
-## Reto 2: 
+## Reto 3: 
+
+## RAE1: Código - Reto 1
+```
+// i = 1
+@1
+D=A
+@i
+M=D
+
+// sum = 0
+@sum
+M=0
+
+(LOOP)
+// if (i > 100) goto END
+@i
+D=M
+@101
+D=D-A
+@END
+D;JGE
+
+// sum = sum + i
+@sum
+D=M
+@i
+D=D+M
+@sum
+M=D
+
+// i = i + 1
+@i
+M=M+1
+
+@LOOP
+0;JMP
+
+(END)
+@END
+0;JMP
+```
+### RAE2: Funcionalidad
+Funciona ya que es el mismo código efectuado en el Reto 1, por ende no hay necesidad de testearlo.
+
+## Reto 4: 
