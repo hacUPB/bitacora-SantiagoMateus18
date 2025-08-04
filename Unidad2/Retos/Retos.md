@@ -123,3 +123,53 @@ M=M+1
 Funciona ya que es el mismo código efectuado en el Reto 1, por ende no hay necesidad de testearlo.
 
 ## Reto 4: 
+### ¿Cómo se declara un puntero en C++?
+Un puntero se declara utilizando el operador * junto al tipo de dato que apunta. Esto indica que la variable almacenará una dirección de memoria.
+
+### ¿Cómo se define un puntero en C++?
+Un puntero se define asignándole la dirección de otra variable, lo cual se hace mediante el operador &.
+
+¿Cómo se almacena en C++ la dirección de memoria de una variable?
+La dirección de memoria de una variable se obtiene utilizando el operador &, que devuelve la ubicación en memoria de dicha variable.
+
+### ¿Cómo se escribe el contenido de la variable a la que apunta un puntero?
+Se accede o modifica el contenido de la variable apuntada utilizando el operador *, lo que se conoce como desreferenciación.
+
+## Reto 5:
+
+### RAE1: Código - Inicial
+int var = 10;
+int *punt;
+punt = &var;
+*punt = 20;
+
+### Solución
+```
+// var = 10
+@10
+D=A
+@var
+M=D
+
+// punt = &var
+@var      // Obtener la dirección de var
+D=A       // Guardar esa dirección en D
+@punt
+M=D       // Guardar la dirección en punt
+
+// *punt = 20
+@20
+D=A       // Valor que queremos asignar
+@punt
+A=M       // Ir a la dirección almacenada en punt
+M=D       // Almacenar 20 en esa dirección
+
+// Fin del programa (bucle infinito)
+(END)
+@END
+0;JMP
+
+// Variables simbólicas (RAM[16], RAM[17], etc.)
+(var)
+(punt)
+```
