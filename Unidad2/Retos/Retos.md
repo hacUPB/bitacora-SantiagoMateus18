@@ -253,3 +253,26 @@ Aquí nos referimos al contenido al cual apunta el puntero "pvar" para guardarlo
 Esta instrucción le asigna al puntero pvar la dirección de memoria de "var3". por lo que *pvar (el puntero) accede o en su caso modifica el contenido de var3. (Es la forma correcta de lo que se comentaba en la pregunta 2)
 
 ### Reto 9: 
+
+### RAE1 - Código
+ ```
+(MAIN)
+
+@SUMA
+0;JMP
+
+(RETURN_A_MAIN)
+(END)
+@END
+0;JMP
+
+(SUMA)
+
+@RETURN_A_MAIN
+0;JMP
+ ```
+
+### RAE2
+Se desarrollaron las dos funciones requeridas, la "Main" y la "Suma". De Main se salta a la suma y luego se salta a la función de regreso que tiene de nombre "Return a main". Tras terminarse el proceso, se ejecuta el loop @END haciendo el código continuo y funicional.
+
+
