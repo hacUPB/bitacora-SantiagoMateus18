@@ -88,4 +88,5 @@ Función dibujar esfera, triángulo y rectángulo:
 
 ## Actividad 9
 ¿Qué sucede cuando presionas la tecla “f”?
+
 Se eliminan los circulos creados al dar click.S
