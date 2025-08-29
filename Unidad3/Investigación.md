@@ -67,6 +67,16 @@ Se crea una esfera en el heap y su puntero se guarda en el vector.
 ¿Por qué ocurre esto?
 Debido a que el heap no elimina la esfera al terminar su funcion cosa que resuelve el problema del puntero y lo hace valido.
 
+## Actividad 8
+ofApp.h:
+![Definición de la clase triángulo y esfera](image.png)
+![Métodos predeterminados](image-1.png)
+ofApp.cpp:
+![Métodos y constructores de triánulo y esfera](image-2.png)
+![Función dibujar esfera, triángulo y rectángulo](image-3.png)
+
+
+
 ## Actividad 9
 ¿Qué sucede cuando presionas la tecla “f”?
 Se eliminan los circulos creados al dar click.S
