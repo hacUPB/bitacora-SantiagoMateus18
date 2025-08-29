@@ -84,6 +84,9 @@ Métodos y constructores de triánulo y esfera:
 Función dibujar esfera, triángulo y rectángulo:
 ![Función dibujar esfera, triángulo y rectángulo](image-3.png)
 
+### Prueba de funcionamiento: 
+![alt text](image-4.png)
+
 
 
 ## Actividad 9
