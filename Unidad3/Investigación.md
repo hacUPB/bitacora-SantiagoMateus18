@@ -69,10 +69,19 @@ Debido a que el heap no elimina la esfera al terminar su funcion cosa que resuel
 
 ## Actividad 8
 ofApp.h:
+
+Definición de la clase triángulo y esfera:
 ![Definición de la clase triángulo y esfera](image.png)
+
+Métodos predeterminados:
 ![Métodos predeterminados](image-1.png)
+
 ofApp.cpp:
+
+Métodos y constructores de triánulo y esfera:
 ![Métodos y constructores de triánulo y esfera](image-2.png)
+
+Función dibujar esfera, triángulo y rectángulo:
 ![Función dibujar esfera, triángulo y rectángulo](image-3.png)
 
 
