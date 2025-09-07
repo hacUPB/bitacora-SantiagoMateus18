@@ -1,14 +1,8 @@
 ## Actividad 1
 ### 1:
-Información proporcionada por ChatGPT para el entendimiento del código. Se realizó con fines de seguir el proceso formativo, pues los temas y el código en sí fueron entendidos en clase sin ningún inconveniente.
-![alt text](image-1.png)
 
-Ejecución realizada con el depurador:
-![alt text](image.png)
 
 ### 2:
-Preguntas realizadas por chat para reforzar los conceptos: 
-![alt text](image-2.png)
 
 ### 3: 
 Una lista enlazada es una estructura donde cada elemento guarda sus datos y un puntero al siguiente, de modo que los nodos pueden estar dispersos en la memoria. En cambio, un arreglo guarda todos sus elementos en posiciones contiguas, lo que da mejor rendimiento en acceso, pero tamaño fijo, mientras que la lista es más flexible para crecer o reducirse.
@@ -51,3 +45,17 @@ Tendría en cuenta usar destructores claros que borren todos los nodos, evitar c
 ### 14: 
 Para probar inicialmente el código parte por parte podemos probar con la creación de un nodo y ver si sus componentes son exactas a las estipuladas por el constructor. O realizar el código de LinkedList para ver si con una lista vacía tenemos "head == nullptr, tail == nullptr y size == 0". 
 
+## Actividad 2:
+
+### Reporte en bitácora:
+
+#### 1:
+Información proporcionada por ChatGPT para el entendimiento del código. Se realizó con fines de seguir el proceso formativo, pues los temas y el código en sí fueron entendidos en clase sin ningún inconveniente.
+![alt text](image-1.png)
+
+Ejecución realizada con el depurador:
+![alt text](image.png)
+
+#### 2:
+Preguntas realizadas por chat para reforzar los conceptos: 
+![alt text](image-2.png)
