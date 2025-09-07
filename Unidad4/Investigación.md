@@ -1,8 +1,17 @@
 ## Actividad 1
 ### 1:
+Información proporcionada por ChatGPT para el entendimiento del código. Se realizó con fines de seguir el proceso formativo, pues los temas y el código en sí fueron entendidos en clase sin ningún inconveniente.
 
+![alt text](image-1.png)
+
+Ejecución realizada con el depurador:
+
+![alt text](image.png)
 
 ### 2:
+Preguntas realizadas por chat para reforzar los conceptos: 
+![alt text](image-2.png)
+
 
 ### 3: 
 Una lista enlazada es una estructura donde cada elemento guarda sus datos y un puntero al siguiente, de modo que los nodos pueden estar dispersos en la memoria. En cambio, un arreglo guarda todos sus elementos en posiciones contiguas, lo que da mejor rendimiento en acceso, pero tamaño fijo, mientras que la lista es más flexible para crecer o reducirse.
@@ -49,13 +58,3 @@ Para probar inicialmente el código parte por parte podemos probar con la creaci
 
 ### Reporte en bitácora:
 
-#### 1:
-Información proporcionada por ChatGPT para el entendimiento del código. Se realizó con fines de seguir el proceso formativo, pues los temas y el código en sí fueron entendidos en clase sin ningún inconveniente.
-![alt text](image-1.png)
-
-Ejecución realizada con el depurador:
-![alt text](image.png)
-
-#### 2:
-Preguntas realizadas por chat para reforzar los conceptos: 
-![alt text](image-2.png)
