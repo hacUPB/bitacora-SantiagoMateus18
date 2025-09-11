@@ -354,5 +354,31 @@ Aquí se encuentra la función para que la pantalla actualice constantemente el 
 ![alt text](image-10.png)
 
 ##### Primera función adicional: POP_POINT
-Aquí definimos que siempre que existan punticos en la pantalla y le demos a la tecla "c" se realizará "popPoint": Eliminar dichos puntos y sus colores. 
+Aquí definimos que siempre que existan punticos en la pantalla y le demos a la tecla "c" se realizará "popPoint": Eliminar dichos puntos y sus colores. Del último al primero, en orden.
 ![alt text](image-11.png)
+
+##### DRAW: La función más usada.
+Aquí se traía cada objeto que debía ser dibujado en pantalla, así como contadores o mapas para el uso del usuario.
+![alt text](image-12.png)
+
+##### Segunda función adicional: Clear();
+Con esta función lo que hice fue diseñar una forma de que la pantalla se borrara rápidamente sin tener que eliminar punto por punto como en "PopPoint". Una sola vez a la tecla 'd' y ya está.
+![alt text](image-13.png)
+
+##### KEYPRESSED:
+Cada vez que alguien oprimía una tecla clave algo debía pasar y por eso tuve que programar su uso con esta función. Solo se usan dos teclas: 'd' y 'c'. 
+![alt text](image-14.png)
+
+##### FUNCIONES DEL MOUSE
+La herramienta física principal que sirve como pincel en el programa tiene 3 funciones: 
+
+Dragged Mouse para que cada vez que alguien usara el mouse continuamente se dibujaran puntos continuos sin parar hasta que se suelte el ratón. 
+![alt text](image-15.png)
+
+MousePressed y MouseReleased para generar el Booleano Flag que le diría al programa si debia generar bolitas y por ende colores cuando el Mouse estuviera en uso o debía dejar de generarlos una vez el Mouse dejara de estar presionado.
+![alt text](image-16.png)
+
+Aquí agradecimientos al profesor por enseñarme la Flag que no habría hecho posible el sistema de bolitas continuas. 
+
+¡Muchas gracias!
+![alt text](image-17.png)
