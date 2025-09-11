@@ -329,56 +329,69 @@ Para la gestión de la memoria, fui muy cuidadoso. Las variables de la clase (po
 5. El programa fue hecho en totalidad por mi y mis conocimientos en vectores con ayuda de chatGPT para funciones extra de las cuales no poseía entendimiento, como vendría siendo la suma de (size_t i = 0; i < positions.size(); i++). Y la lógica de los nodos y la cola que fue la parte más difícil de implementar. 
 
 ##### Clase Nodo: 
+
 ![alt text](image-5.png)
 
 ##### Clase Queue: 
 La clase y algunos métodos ya definidos para no confundirlos con otros del .cpp (ejemplo el Clear())
+
 ![alt text](image-6.png)
 
 #### clear(); de Queue: 
 y el BackValue() para devolver el ultimo valor del segundo corrido. 
+
 ![alt text](image-7.png)
 
 ##### Class ofApp, la más grande y la que fundamenta el programa
 aqui se encuentran los vectores que realizan todo el funcionamiento mayor, cada punto, cada color y sus funciones respectivas de vectores están aquí. 
+
 ![alt text](image-8.png)
 
 ###### AHORA VAMOS A PASAR FUNCIÓN POR FUNCIÓN DEL ARCHIVO .CPP: 
 
 ##### SETUP:
 Aquí está el mapa de colores para el uso del usuario. Y la definición del fondo asi como su respectivo color.
+
 ![alt text](image-9.png)
 
 ##### UPDATE:
 Aquí se encuentra la función para que la pantalla actualice constantemente el último segundo corrido desde que se hace RUN al código. 
+
 ![alt text](image-10.png)
 
 ##### Primera función adicional: POP_POINT
 Aquí definimos que siempre que existan punticos en la pantalla y le demos a la tecla "c" se realizará "popPoint": Eliminar dichos puntos y sus colores. Del último al primero, en orden.
+
 ![alt text](image-11.png)
 
 ##### DRAW: La función más usada.
 Aquí se traía cada objeto que debía ser dibujado en pantalla, así como contadores o mapas para el uso del usuario.
+
 ![alt text](image-12.png)
 
 ##### Segunda función adicional: Clear();
 Con esta función lo que hice fue diseñar una forma de que la pantalla se borrara rápidamente sin tener que eliminar punto por punto como en "PopPoint". Una sola vez a la tecla 'd' y ya está.
+
 ![alt text](image-13.png)
 
 ##### KEYPRESSED:
 Cada vez que alguien oprimía una tecla clave algo debía pasar y por eso tuve que programar su uso con esta función. Solo se usan dos teclas: 'd' y 'c'. 
+
 ![alt text](image-14.png)
 
 ##### FUNCIONES DEL MOUSE
 La herramienta física principal que sirve como pincel en el programa tiene 3 funciones: 
 
 Dragged Mouse para que cada vez que alguien usara el mouse continuamente se dibujaran puntos continuos sin parar hasta que se suelte el ratón. 
+
 ![alt text](image-15.png)
 
 MousePressed y MouseReleased para generar el Booleano Flag que le diría al programa si debia generar bolitas y por ende colores cuando el Mouse estuviera en uso o debía dejar de generarlos una vez el Mouse dejara de estar presionado.
+
 ![alt text](image-16.png)
 
 Aquí agradecimientos al profesor por enseñarme la Flag que no habría hecho posible el sistema de bolitas continuas. 
 
 ¡Muchas gracias!
+
 ![alt text](image-17.png)
