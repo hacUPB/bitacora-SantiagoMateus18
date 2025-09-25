@@ -22,6 +22,72 @@ sí, en el mismo bloque donde se crea el objeto.
 ## ¿qué indica el tamaño del objeto sobre su estructura interna?
 indica cómo está organizado internamente en memoria. Por ejemplo, en este caso, el tamaño será de 8 bytes, y no contiene espacios rellenados o en blanco.
 
+# Análisis de Diferencias: 
+Objetivo: comparar cómo diferentes clases afectan el uso de memoria.
+
+Considera los siguientes pasos:
+Crear clases con diferentes atributos y métodos:
+
+```
+class Simple {
+public:
+    int a;
+};
+```
+```
+class Complex {
+public:
+    int a, b, c;
+    void method1() {}
+    void method2() {}
+};
+```
+
+Compara los tamaños:
+
+```
+std::cout << "Tamaño de Simple: " << sizeof(Simple) << " bytes" << std::endl;
+std::cout << "Tamaño de Complex: " << sizeof(Complex) << " bytes" << std::endl;
+```
+
+Agregar datos estáticos y dinámicos:
+
+```
+class StaticData {
+public:
+    static int s;
+    int a;
+};
+
+int StaticData::s = 0;
+
+class DynamicData {
+public:
+    int* ptr;
+    DynamicData() {
+        ptr = new int[10];
+    }
+    ~DynamicData() {
+        delete[] ptr;
+    }
+};
+```
+Prueba de tamaños: 
+![alt text](image.png)
+
+## ¿Cómo afectan los datos estáticos al tamaño de la instancia?
+No lo cambian, la variable static vive en una zona global y es única para toda la clase, así que cada objeto solo cuenta el tamaño de sus miembros no estáticos.
+
+## ¿Qué diferencias hay entre datos estáticos y dinámicos en términos de memoria?
+
+1. Estáticos: un solo espacio compartido por todos los objetos; existe todo el programa.
+2. Dinámicos: se piden con new y viven en el heap; cada objeto puede reservar su propio bloque y hay que liberarlo en el destructor.
+
+## Prompt para ChatGPT: explícame cómo el uso de variables estáticas y dinámicas en una clase afecta el tamaño de sus instancias. ¿Las variables estáticas ocupan espacio en cada objeto?
+
+1. Las variables estáticas no aumentan el tamaño de cada objeto, porque se guardan una sola vez en una zona global y todos los objetos comparten esa misma dirección.
+2. Las variables dinámicas sí influyen: el puntero miembro (por ejemplo int* ptr) cuenta en el tamaño del objeto, y además cada objeto puede pedir memoria extra en el heap con new, que no se refleja en sizeof pero sí ocupa espacio fuera del objeto.
+
 ## ¿Que es un objeto desde la memoria?
 Un objeto desde la memoria es un bloque de memoria almacenado de forma contigua, que guarda información de atributos no estáticos ni métodos. Si hay punteros en el objeto, en la clase objeto, el dicho objeto solo guardará la dirección de memoria del puntero en cuestión, no los datos que posea el puntero, sin importar en que parte de la memoria estén dichos datos, el objeto nunca los guardará. 
 
@@ -48,6 +114,30 @@ Las vtables permiten el polimorfismo dinámico, ya que guardan las direcciones d
 ## ¿Cómo se implementan los métodos virtuales en C++?
 Se implementan mediante la vtable. Cada clase con métodos virtuales genera su propia tabla con punteros a los métodos. Los objetos tienen un puntero oculto a esa tabla y las llamadas se resuelven accediendo a ella en tiempo de ejecución.
 
+# Uso de punteros y referencias
+Objetivo: explorar cómo los punteros y referencias afectan la gestión de la memoria y la llamada a métodos.
+Considera estos pasos:
+
+1. Implementar una clase con punteros a funciones:
+
+class FunctionPointerExample {
+public:
+    void (*funcPtr)();
+    static void staticFunction() {
+        std::cout << "Static function called" << std::endl;
+    }
+    void assignFunction() {
+        funcPtr = staticFunction;
+    }
+};
+1. Analizar el impacto en memoria:
+
+## Observar si el tamaño de la instancia cambia al usar punteros a funciones.
+Sí, el objeto es un poquito más grande porque guarda el puntero a la función. En un sistema de 64 bits ese puntero ocupa 8 bytes, así que la instancia aumenta justo ese espacio.
+
+## Verificar cómo se almacenan estos punteros.
+El puntero a la función se guarda como un dato normal dentro del objeto, en la misma parte de memoria donde están sus otros atributos.
+
 ## ¿Cuál es la relación entre los punteros a métodos y la vtable?
 Los punteros a funciones son atributos explícitos que almacenan una dirección de función. En cambio, los punteros a métodos virtuales se gestionan automáticamente a través de la vtable. Ambos son direcciones de código, pero los punteros explícitos aumentan el tamaño del objeto directamente, mientras que los virtuales usan el puntero a la vtable.
 
@@ -71,6 +161,39 @@ El compilador implementa el encapsulamiento controlando el acceso según los mod
 ## Si los miembros privados aún ocupan espacio en el objeto, ¿Qué impide que se acceda a ellos desde fuera de la clase?
 Lo que lo impide es una verificación del compilador en tiempo de compilación. La memoria está ahí, pero las reglas del lenguaje bloquean el acceso directo al nombre de esos atributos.
 
+## Ejmplo de cómo protege lo que está privado:
+```
+class AccessControl {
+private:
+    int privateVar;
+protected:
+    int protectedVar;
+public:
+    int publicVar;
+    AccessControl() : privateVar(1), protectedVar(2), publicVar(3) {}
+};
+​````
+Intentar acceder a los miembros desde una función externa:  
+````cpp
+int main() {
+    AccessControl ac;
+    ac.publicVar = 10; // Válido
+    // ac.protectedVar = 20; // Error de compilación
+    // ac.privateVar = 30; // Error de compilación
+    return 0;
+}
+```
+
+![alt text](image-1.png)
+
+# Hackers:
+
+código que resulta en un error de compilación: 
+![alt text](image-2.png)
+
+código que no resulta en error de compilación: 
+![alt text](image-3.png)
+
 ## ¿Qué es el encapsulamiento y cuál es su propósito en la programación orientada a objetos?
 El encapsulamiento es el principio que restringe el acceso directo a los datos internos de una clase, exponiendo solo lo que se considere necesario mediante interfaces públicas. Su propósito es proteger el estado del objeto y mantener un control claro de cómo se manipula.
 
@@ -89,11 +212,39 @@ Podría causar errores graves, corrupción de memoria, violación de la segurida
 ## ¿Qué implicaciones tiene este experimento sobre la confianza en las barreras de encapsulamiento que proporciona C++?
 Muestra que las barreras son lógicas, no físicas. En C++ el encapsulamiento depende del compilador, pero no es una protección absoluta contra accesos de bajo nivel.
 
+# Herencia y la Relación en Memoria
+Considera los siguientes pasos:
+Crear clases con herencia:
+
+​```
+class Base {
+public:
+    int baseVar;
+};
+class Derived : public Base {
+public:
+    int derivedVar;
+};
+
+Derived d;
+std::cout << "Dirección de d: " << &d << std::endl;
+std::cout << "Dirección de d.baseVar: " << &(d.baseVar) << std::endl;
+std::cout << "Dirección de d.derivedVar: " << &(d.derivedVar) << std::endl;
+​```
+## prueba de funcionamiento:
+![alt text](image-4.png)
+
 ## ¿Cómo se organizan los atributos en memoria?
 En un objeto derivado, primero se almacenan los atributos de la clase base en orden, y luego se agregan los atributos de la clase derivada. Todo queda en memoria contigua dentro del objeto.
 
 ## ¿Qué sucede si agregamos más niveles de herencia?
 Cada nivel de herencia agrega sus atributos al bloque de memoria del objeto en orden jerárquico: primero los de la clase base más lejana, luego los de las derivadas intermedias, y finalmente los de la derivada más específica.
+
+# Polimorfismo:
+![alt text](image-5.png)
+
+Prueba: 
+![alt text](image-6.png)
 
 ## ¿Cómo utiliza el programa las vtables para el polimorfismo?
 Cada clase con métodos virtuales genera una tabla (vtable) con punteros a sus métodos. Cada objeto guarda un puntero oculto a la vtable de su clase. Cuando se llama un método virtual, el programa consulta la vtable para encontrar la implementación correspondiente.
@@ -101,14 +252,36 @@ Cada clase con métodos virtuales genera una tabla (vtable) con punteros a sus m
 ## ¿Cuál es el impacto en el rendimiento?
 El uso de vtables introduce una indirección adicional en las llamadas a métodos virtuales, lo que es un pequeño costo en tiempo de ejecución y en memoria (un puntero extra por objeto). Sin embargo, este costo suele ser mínimo frente a la flexibilidad que se gana.
 
+# Prompt para ChatGPT: ¿Cómo funciona el polimorfismo en C++ a nivel interno? Explica cómo se utilizan las vtables para resolver métodos virtuales en una jerarquía de herencia.
+1. En C++ el polimorfismo se logra con métodos virtuales y una estructura llamada vtable.
+Cuando una clase declara un método virtual, el compilador agrega en cada objeto un puntero oculto que apunta a la vtable de su tipo real.
+
+2. La vtable es una tabla con las direcciones en memoria de las funciones virtuales de esa clase.
+Si una clase derivada redefine un método, su vtable guarda la dirección de esa nueva versión.
+
+En tiempo de ejecución, cuando llamas a un método virtual a través de un puntero o referencia a la clase base, el programa:
+
+1. Lee el puntero oculto del objeto.
+2. Accede a la vtable de la clase real del objeto.
+3. Salta a la dirección de la función correspondiente en esa tabla.
+
+Así, un Animal* puede ejecutar el makeSound() propio de Dog o Cat sin que el compilador sepa el tipo exacto en tiempo de compilación.
+
 ## ¿Cómo se implementan internamente el encapsulamiento, la herencia y el polimorfismo?
 1. El encapsulamiento se implementa con verificaciones del compilador, que impiden acceder a miembros privados/protegidos aunque sigan ocupando memoria.
 2. La herencia se refleja en memoria con los atributos de la clase base seguidos de los de la derivada.
 3. El polimorfismo se implementa mediante vtables y punteros ocultos en los objetos que permiten llamadas dinámicas a métodos virtuales.
 
 ## Análisis: ventajas y desventajas en términos de eficiencia y complejidad.
-### Encapsulamiento: Ventaja: mantiene integridad de datos. Desventaja: puede romperse con técnicas de bajo nivel.
 
-### Herencia: Ventaja: reutilización y organización del código. Desventaja: cada nivel aumenta el tamaño y complejidad del objeto.
+### Encapsulamiento: 
+1. Ventaja: mantiene integridad de datos. 
+2. Desventaja: puede romperse con técnicas de bajo nivel.
 
-### Polimorfismo: Ventaja: flexibilidad y comportamiento dinámico. Desventaja: introduce un pequeño costo en memoria y rendimiento.
+### Herencia: 
+1. Ventaja: reutilización y organización del código. 
+2. Desventaja: cada nivel aumenta el tamaño y complejidad del objeto.
+
+### Polimorfismo: 
+1. Ventaja: flexibilidad y comportamiento dinámico. 
+2. Desventaja: introduce un pequeño costo en memoria y rendimiento.
