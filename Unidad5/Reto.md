@@ -72,3 +72,4 @@ Probé cada método mientras diseñaba la interfaz con tal de ver si funcionaba 
 Realicé diversos dibujos, probé que el grosor de los puntos cambiara, intercambié el pincel por los 3 que hay. Probé todos los colores y la interfaz visual funciona a la perfección pues todos los textos se encuentran visibles.
 
 ## Prueba de funcionamiento total: 
+[Video con todas las funciones (Sin VOZ)](https://www.youtube.com/watch?v=94VWEn7CR-Y)
