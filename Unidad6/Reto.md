@@ -50,8 +50,9 @@ ofApp.cpp (implementación funcional de los patrones)
 
 El código fue desarrollado en C++ con openFrameworks, siguiendo la arquitectura modular y respetando los principios de encapsulamiento y polimorfismo.
 
-### Video:
-[Video😝](https://youtu.be/jRakT6VD5Qk)
+### Videos:
+[Vídeo😝](https://youtu.be/jRakT6VD5Qk)
+[Vídeo del resto del funcionamiento😝](https://youtu.be/RDDraVZvpjI)
 
 ## RAE 2:
 
