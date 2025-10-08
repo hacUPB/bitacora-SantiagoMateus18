@@ -52,6 +52,8 @@ El código fue desarrollado en C++ con openFrameworks, siguiendo la arquitectura
 
 ### Videos:
 [Vídeo😝](https://youtu.be/jRakT6VD5Qk)
+
+
 [Vídeo del resto del funcionamiento😝](https://youtu.be/RDDraVZvpjI)
 
 ## RAE 2:
