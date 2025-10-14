@@ -84,6 +84,22 @@ Se validó que el rendimiento fuera estable con múltiples figuras (hasta 50 en 
 
 (Ver video para comprobar)
 
+### Errores: 
+
+#### Error en reverseState
+Descubrimos un error al implementar y definir el estado de reversa del programa. No propiamente por algún error en el diseño o escritura, sino que la versión del programa que estabamos usando no era la actual, con el nuevo estado implementado, por ende no funcionaba ya que no existía. 
+
+De la misma forma noté que la definición del estado vacío o de detención (Stopped) no estaba bien escrito según las convenciones, ya que estaba vacío. Lo corregí y lo definí de esta forma: 
+
+```cpp
+void ReverseState::update(Shape * shape) {
+	shape->position.x -= shape->speed;
+	if (shape->position.x < 0) {
+		shape->position.x = ofGetWidth();
+	}
+}
+```
+
 ### Conclusión: 
 La aplicación cumple los requisitos funcionales del reto al aplicar correctamente los tres patrones de diseño, y los requisitos no funcionales al mantener un código modular, claro y extensible.
 Se evidencia un dominio práctico del uso de patrones de comportamiento y creación dentro de un contexto gráfico interactivo.
@@ -170,8 +186,9 @@ private:
 	int shapeCount = 1;
 	std::string currentType = "circle";
 };
-```
-### ofApp.cpp
+```cpp
+
+### ofApp.
 
 ```cpp
 #include "ofApp.h"
